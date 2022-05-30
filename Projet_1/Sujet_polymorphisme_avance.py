@@ -37,13 +37,19 @@ class Personnel:
     def __modifier_prenom(self,prenom):
         
         self.__prenom = prenom
+
+    def get_nom(self):
         
+        return self.__nom    
     
     def get_prenom(self):
         
         return self.__prenom
         
+    def get_id(self):
         
+        return self.__id_employe
+
     def afficher_coordonnes_personnel(self):
         
         print("Ci - joint les coordonnees de l'employé : \n")
@@ -52,7 +58,7 @@ class Personnel:
         print(self.code_postal,self.ville)
         
                
-    def augmenter_selaire(self,augmentation):
+    def augmenter_salaire(self,augmentation):
         
         self.salaire_mensuel_brut += augmentation
         
@@ -152,8 +158,8 @@ class Salarie(Personnel):
             
             salaire = self.salaire_mensuel_brut + self.commission + self.calcul_plafond_frais()
             
-            print("N° : ",self.id)
-            print("Nom du salarié : ",self.nom)
+            print("N° : ",self.get_id())
+            print("Nom du salarié : ",self.get_nom())
             print("Adresse : ",self.numero_rue,self.nom_rue)
             print("Ville : ",self.ville)
             print("Fonction : ",self.fonction)
@@ -166,8 +172,8 @@ class Salarie(Personnel):
         
         else :
 
-            print("N° : ",self.id)
-            print("Nom du salarié : ",self.nom)
+            print("N° : ",self.get_id())
+            print("Nom du salarié : ",self.get_nom())
             print("Adresse : ",self.numero_rue,self.nom_rue)
             print("Ville : ",self.ville)
             print("Fonction : ",self.fonction)
@@ -181,52 +187,52 @@ Exemple d'utilisation de la classe Personnel
 
 """
    
-personnel_1 = Personnel(1,"Clerc")   
+# personnel_1 = Personnel(1,"Clerc")   
 
-#genere une erreur car l'attribut est prive
-#print(personnel_1.prenom)
+# #genere une erreur car l'attribut est prive
+# #print(personnel_1.prenom)
 
-#genere une erreur car la methode est prive
-#personnel_1.__modifier_prenom("Robert")
+# #genere une erreur car la methode est prive
+# #personnel_1.__modifier_prenom("Robert")
 
-personnel_1.changer_prenom("Robert")
+# #Affiche vide
+# print(personnel_1.get_prenom())
 
-print(personnel_1.get_prenom())
+# personnel_1.changer_prenom("Robert")
+
+# #Affiche Robert
+# print(personnel_1.get_prenom())
 
 
 
-"""
+# """
 
-Exemple d'utilisation de la classe Salarie
+# Exemple d'utilisation de la classe Salarie
 
-"""
+# """
 
-employee_1 = Salarie(2,"Jean","Consultant",10000)
+# employee_1 = Salarie(2,"Jean","Consultant",10000)
 
-#genere une erreur car l'attribut est prive
-#print(employee_1.prenom)
+# #genere une erreur car l'attribut est prive
+# # print(employee_1.prenom)
 
-#genere une erreur car la methode est prive
-#employee_1.__modifier_prenom("Robert")
+# # genere une erreur car la methode est prive
+# # donc uniquement accessible dans la classe
+# # l'heritage de fonctionne pas pour les méthodes privées
+# # employee_1.__modifier_prenom("Robert")
 
-employee_1.changer_prenom("Jean")
+# # Changement d'attribut privé
 
-print(employee_1.get_prenom())
-   
-        
-# employee_1.id = 1
-# employee_1.nom = "ABIDI"
-# employee_1.prenom = "Besma"
+# employee_1.changer_prenom("Jean")
+
+# # Changement d'attributs public
+          
 # employee_1.numero_rue = 3
-# employee_1.nom_rue = "Rue el Hayet"
+# employee_1.nom_rue = "Place Gambetta"
 # employee_1.code_postal = 75000
-# employee_1.ville = "JENDOUBA"
+# employee_1.ville = "Grenoble"
 # employee_1.salaire_mensuel_brut = 7500
-
-
-
 # employee_1.fonction = "REPRESENTANT"
-# employee_1.chiffre_affaire = 186000
 # employee_1.frais = 750
 # employee_1.commission = 5440
 # employee_1.numero_plafond = 1   
@@ -234,29 +240,26 @@ print(employee_1.get_prenom())
 
 # employee_1.afficher_salaire()      
 
-
 # print("\n")
 
 
-# employee_2 = Salarie()
+# """
+
+# Declaration d'un deuxieme salarié
+
+# """
+
+
+# employee_2 = Salarie(3,"Marc","Magasinier",10000)
    
-        
-# employee_2.id = 9
-# employee_2.nom = "AYADI"
-# employee_2.prenom = "Salah"
+
+# employee_2.changer_prenom("Olivier")  
 # employee_2.numero_rue = 87
 # employee_2.nom_rue = "Rue de la liberté"
-# employee_2.code_postal = 75000
-# employee_2.ville = "TUNIS"
+# employee_2.code_postal = 69000
+# employee_2.ville = "Lyon"
 # employee_2.salaire_mensuel_brut = 8690
 
-
-
-# employee_2.fonction = "Magasinier"
- 
-
-
-# employee_2.afficher_salaire()  
    
 # employee_2.numero_rue = 52
 # employee_2.nom_rue = "Rue de grèce"
@@ -266,25 +269,23 @@ print(employee_1.get_prenom())
 # employee_2.salaire_mensuel_brut = employee_2.salaire_mensuel_brut = 8690 * 1.05
 
 
+# employee_2.augmenter_chiffre_affaire(100000)
+# employee_2.augmenter_chiffre_frais(700)
 
 
-
-
-# employee_1.augmenter_chiffre_affaire(100000)
-# employee_1.augmenter_chiffre_frais(700)
-
-
-# print("\n")
-# employee_1.afficher_salaire()  
 # print("\n")
 # employee_2.afficher_salaire()  
+# print("\n")
 
 
+#######################
+# Extention du projet #
+#######################
 
 class P1:
-    
+    """Documentation de la classe P1"""
+    #Attributs de classe qui ne necessite pas d'instance pour etre utilisé
     nb = 0
-    
     nb_static = 10
     
     def __init__(self,id_employe,nom):
@@ -310,29 +311,66 @@ class P1:
 
         return self.__prenom
     
+    # methode de classe qui ne necessite pas d'instanciation pour etre utilise
     
+    #public
     @classmethod
     def get_nb(cls):
         
         cls.nb+=1
         return P1.nb
-    
-    
-    @staticmethod
-    def get_nb_static(nb_static):  
 
-        return nb_static+P1.nb
-    
-    
-    
+    #privee
     @classmethod
     def __get_nb_private(cls):
         
         cls.nb+=1
         return P1.nb
     
+    # methode de classe qui n'utilise pas les objets et les attributs de sa classe
+    # Cette methode peut etre utilise sans instancier de classe
+
+    #public
+    @staticmethod
+    def get_nb_static(nb_static):  
+
+        return nb_static+P1.nb
+
+    #privee
+    @staticmethod
+    def __get_nb_static_private(nb_static):  
+
+        return nb_static+P1.nb
+
+#exemple d'utilisation de la methode de classe get_nb()
+
+# print(P1.nb)
+# P1.get_nb()
+# print(P1.nb)
+
+# print("\n")
+
+#exemple d'utilisation de la methode statique get_nb_static()
+
+# print(P1.get_nb_static(5))
+
+
+# # exemple d'utilisation de la methode de classe __get_nb_private()
+# # ne fonctionne pas car la méthode est privée
+
+# print(P1.nb)
+# P1.__get_nb_private()
+# print(P1.nb)
+
+# print("\n")
+
+# # exemple d'utilisation de la methode statique __get_nb_static_private()
+# ne fonctionne pas car la méthode est privée
+# print(P1.__get_nb_static_private(5))
+
+
 class P2(P1):
-    
+    """Documentation de la classe P2"""
     def __init__(self,id_employe,nom):
         
         P1.__init__(self,id_employe,nom)
@@ -353,24 +391,107 @@ class P2(P1):
 
         return self.prenom
 
-print("test = ", P1.get_nb())
-print("test = ", P1.get_nb())
-
-print("test = ", P1.get_nb_static(2))
-print("test = ", P1.get_nb_static(5))
-
-test = P1(1,"test")
 
 
-test2 = P2(2,"test2")
+
+# Objet P1
+objet_P1 = P1(1,"personne_1")
+
+# Objet P2 avec une classe herite de la classe P1
+objet_P2 = P2(2,"personne_2")
 
 
-#print(dir(test2))
-print(inspect.getmembers(test2))
 
-print(test2.get_id_employe())
-print(test2.get_id_nom())
-print(test2.get_id_Prenom())
+# # retourne tous les attributs et toutes les methodes de l'objet
+# print(dir(objet_P1))
+# print(dir(objet_P2))
+
+# # retourne la classe de l'objet
+# print(objet_P1.__class__)
+# print(objet_P2.__class__)
+
+# # retourne la classe de l'objet
+# print(objet_P1.__delattr__)
+
+# # retourne l'ensemble des paires attributs/valeurs sous forme de dictionnaire
+# print(objet_P1.__dict__)
+# print(objet_P2.__dict__)
+
+# # retourne la doc de classe
+# print(objet_P1.__doc__)
+# print(objet_P2.__doc__)
+
+# # retourne un booleen resultant de la comparaison de deux objets
+# peut etre modifie
+# print(objet_P1.__eq__)
+# print(objet_P1.__eq__(objet_P1))
+# print(objet_P1.__eq__(objet_P2))
+
+# a approfondir
+#print(objet_P1.__format__)
+#print(objet_P1.__format__("test"))
+
+# aucune implementation par defaut, elle doit etre créer
+#permet de comparer deux attributs avec >=
+#print(objet_P1.__ge__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__getattribute__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__gt__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__hash__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__init_subclass__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__le__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__lt__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__module__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__ne__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__new__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__reduce__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__reduce_ex__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__repr__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__setattr__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__sizeof__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__str__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__subclasshook__)
+
+# retourne la classe de l'objet
+#print(objet_P1.__weakref__)
+
+
+# print(inspect.getmembers(test2))
+
+# print(test2.get_id_employe())
+# print(test2.get_id_nom())
+# print(test2.get_id_Prenom())
 
 
 

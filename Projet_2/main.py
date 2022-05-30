@@ -26,7 +26,6 @@ class Classe :
     
     id_classe_compteur = 0
     path_enregistrement_classe_fichier = "/home/fitec/formation_fitec/python/projet/"
-    nom_enregistrement_classe_fichier = "classe.txt"
     
     def __init__(self,niveau,nom_de_classe) :
         
@@ -197,20 +196,3 @@ class Note :
 #         self.numero_salle = 0
 #         self.liste_id_creneau_horaire = []
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
