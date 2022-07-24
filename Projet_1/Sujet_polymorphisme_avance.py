@@ -6,7 +6,8 @@ Created on Wed Dec  8 16:28:56 2021
 @author: fitec
 """
 
-import inspect
+
+from abc import ABC, abstractmethod
 
 #declaration des variables globales
 
@@ -341,6 +342,8 @@ class P1:
     def __get_nb_static_private(nb_static):  
 
         return nb_static+P1.nb
+    
+
 
 #exemple d'utilisation de la methode de classe get_nb()
 
@@ -399,6 +402,157 @@ objet_P1 = P1(1,"personne_1")
 
 # Objet P2 avec une classe herite de la classe P1
 objet_P2 = P2(2,"personne_2")
+
+
+# Declaration d'une classe abstraite
+
+class P3_abstract(ABC):
+    
+    
+    def __init__(self,number=0):
+        
+        self.number=number
+    
+    @abstractmethod
+    def methode_abstraite(self):
+        pass
+
+
+    def motor(self):
+        
+        return 3
+
+
+class P4_inherit(P3_abstract):
+    
+    
+    def __init__(self,number=0):
+        
+        P3_abstract.__init__(self,number)
+    
+    
+    def methode_abstraite(self):
+        
+        print("Number is",self.number)
+        
+        
+    #Override de la méthode mère
+    def motor(self):
+        
+        return 4
+            
+    # appel de la fonction mère motor grace à la fonction super()
+    def motor_inherited(self):
+        
+        return super().motor()
+        
+ 
+class P5_inherit(P3_abstract):
+    
+    def __init__(self,number=0):
+        
+        P3_abstract.__init__(self,number)
+    
+    def methode_abstraite(self):
+        
+        print("Number is the",self.number)
+    
+    #Override de la méthode mère
+    def motor(self):
+        
+        return 5
+            
+    # appel de la fonction mère motor grace à la fonction super()
+    def motor_inherited(self):
+        
+        return super().motor()
+
+
+    
+#Declaration d'une classe abstraite
+#from abc import ABC, abstractmethod
+      
+#Ne fonctionne pas car la methode est abstraite
+#objet_P3 = P3_abstract()
+        
+
+objet_P4 = P4_inherit(2)
+# objet_P4.methode_abstraite()
+
+
+objet_P5 = P5_inherit(4)
+# objet_P5.methode_abstraite()
+
+
+
+#appel d'une fonction override
+
+# print(objet_P4.motor())
+
+# print(objet_P4.motor_inherited())
+
+
+
+
+
+#Multiple heritage de classe
+
+class Ecran :
+    
+    def __init__(self):
+        
+        self.longeur=40
+        self.largeur=30
+        self.diagonale=50
+        self.constructeur="Sony"
+        
+        
+    def allumer_ecran(self):
+        
+        return "ecran allumer"
+    
+    def eteindre_ecran(self):
+        
+        return "ecran eteint"   
+      
+    def afficher_menu(self):
+        
+        return "menu ecran afficher"
+    
+ 
+    
+    
+class Peripherique_sortie_ordinateur :
+    
+    def __init__(self) :
+        
+        self.constructeur = "Samsung"
+        self.type_sortie = "Visuel"
+        
+        
+    def afficher_menu(self):
+        
+        return "menu peripherique afficher"    
+
+
+class Ecran_ordinateur(Ecran,Peripherique_sortie_ordinateur) :
+    
+    def __init__(self):
+        
+        Ecran.__init__(self)
+        Peripherique_sortie_ordinateur.__init__(self)
+        
+    def allumer_ecran(self):
+            
+        return "ecran ordinateur allumer"
+        
+    
+    
+Premier_ecran_ordinateur = Ecran_ordinateur()
+
+print(Premier_ecran_ordinateur.allumer_ecran())
+print(Premier_ecran_ordinateur.eteindre_ecran())
+print(Premier_ecran_ordinateur.afficher_menu())
 
 
 

@@ -163,12 +163,12 @@ employee_1 = Salarie()
    
         
 employee_1.id = 1
-employee_1.nom = "ABIDI"
-employee_1.prenom = "Besma"
+employee_1.nom = "Mickael"
+employee_1.prenom = "Laffrata"
 employee_1.numero_rue = 3
-employee_1.nom_rue = "Rue el Hayet"
+employee_1.nom_rue = "Rue pasteur"
 employee_1.code_postal = 75000
-employee_1.ville = "JENDOUBA"
+employee_1.ville = "Maubeuge"
 employee_1.salaire_mensuel_brut = 7500
 
 
@@ -190,12 +190,12 @@ employee_2 = Salarie()
    
         
 employee_2.id = 9
-employee_2.nom = "AYADI"
-employee_2.prenom = "Salah"
+employee_2.nom = "Marc"
+employee_2.prenom = "Anthony"
 employee_2.numero_rue = 87
 employee_2.nom_rue = "Rue de la liberté"
 employee_2.code_postal = 75000
-employee_2.ville = "TUNIS"
+employee_2.ville = "Bordeaux"
 employee_2.salaire_mensuel_brut = 8690
 
 
@@ -209,7 +209,7 @@ employee_2.afficher_salaire()
 employee_2.numero_rue = 52
 employee_2.nom_rue = "Rue de grèce"
 employee_2.code_postal = 75000
-employee_2.ville = "Soliman"
+employee_2.ville = "Bordeaux"
 
 employee_2.salaire_mensuel_brut = employee_2.salaire_mensuel_brut = 8690 * 1.05
 
